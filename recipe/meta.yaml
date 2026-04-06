@@ -1,5 +1,5 @@
 {% set name = "opentelemetry-instrumentation-agno" %}
-{% set version = "0.57.0" %}
+{% set version = "0.53.3" %}
 
 package:
   name: {{ name|lower }}
@@ -38,9 +38,14 @@ about:
   dev_url: https://github.com/traceloop/openllmetry
   doc_url: https://www.traceloop.com/docs/openllmetry/introduction
   summary: OpenTelemetry Agno instrumentation
+  description: |
+    This library provides automatic instrumentation for the Agno framework.
   license: Apache-2.0
   license_file: LICENSE
+  license_family: Apache
 
 extra:
   recipe-maintainers:
     - timkpaine
+  skip_lints:
+    - reachable_url
