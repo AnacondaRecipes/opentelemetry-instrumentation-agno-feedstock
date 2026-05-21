@@ -12,6 +12,7 @@ source:
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
+  skip: true  # [py<310]
 
 requirements:
   host:
@@ -20,7 +21,7 @@ requirements:
     - pip
   run:
     - python
-    - opentelemetry-api >=1.38.0,<2.0.0
+    - opentelemetry-api >=1.28.0,<2.0.0
     - opentelemetry-instrumentation >=0.59b0
     - opentelemetry-semantic-conventions >=0.59b0
     - opentelemetry-semantic-conventions-ai >=0.5.1,<0.6.0
