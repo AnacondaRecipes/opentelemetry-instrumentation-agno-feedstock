@@ -10,18 +10,18 @@ source:
   sha256: 2356143f17aa237540419ff628ed82c2bbb03f4077338d6b7ca03e85278d4348
 
 build:
-  noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
+  skip: true  # [py<310]
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python
     - hatchling
     - pip
   run:
-    - python >={{ python_min }}
-    - opentelemetry-api >=1.38.0,<2.0.0
+    - python
+    - opentelemetry-api >=1.28.0,<2.0.0
     - opentelemetry-instrumentation >=0.59b0
     - opentelemetry-semantic-conventions >=0.59b0
     - opentelemetry-semantic-conventions-ai >=0.5.1,<0.6.0
@@ -33,16 +33,20 @@ test:
     - pip check
   requires:
     - pip
-    - python {{ python_min }}
 
 about:
   home: https://www.traceloop.com/openllmetry
   dev_url: https://github.com/traceloop/openllmetry
   doc_url: https://www.traceloop.com/docs/openllmetry/introduction
   summary: OpenTelemetry Agno instrumentation
+  description: |
+    This library provides automatic instrumentation for the Agno framework.
   license: Apache-2.0
   license_file: LICENSE
+  license_family: Apache
 
 extra:
   recipe-maintainers:
     - timkpaine
+  skip_lints:
+    - reachable_url
