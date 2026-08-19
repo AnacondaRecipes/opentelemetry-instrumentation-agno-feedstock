@@ -1,30 +1,30 @@
 {% set name = "opentelemetry-instrumentation-agno" %}
-{% set version = "0.57.0" %}
+{% set version = "0.62.1" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_instrumentation_agno-{{ version }}.tar.gz
-  sha256: 2356143f17aa237540419ff628ed82c2bbb03f4077338d6b7ca03e85278d4348
+  sha256: cdccd02c5e20f090cb1119b88f3f3fd57692a44c8bcec198fc68e114e5e87fac
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: true  # [py<310]
 
 requirements:
   host:
+    - pip
     - python
     - hatchling
-    - pip
   run:
     - python
     - opentelemetry-api >=1.28.0,<2.0.0
     - opentelemetry-instrumentation >=0.59b0
-    - opentelemetry-semantic-conventions >=0.59b0
     - opentelemetry-semantic-conventions-ai >=0.5.1,<0.6.0
+    - opentelemetry-semantic-conventions >=0.63b1
 
 test:
   imports:
